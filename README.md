@@ -4,6 +4,17 @@ A full-stack appointment scheduling and queue management system built with **Fas
 
 This system allows customers to book appointments, staff to manage queues, and admins to oversee operations through a centralized dashboard.
 
+## Initial setup
+
+Requires [direnv](https://direnv.net/) and [nix](https://nixos.org).
+
+```bash
+mkdir -p ~/.config/direnv
+# Either copy or append the layout script
+cat $PROJECT_PATH/.direnv.uv >> ~/.config/direnv/direnvrc
+direnv allow
+```
+
 ---
 
 ## 🚀 Features
