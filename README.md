@@ -113,17 +113,18 @@ direnv allow
 ## 🏗️ Project Structure
 
 ```
-backend/
-├── app/
-│   ├── api/            # Route handlers (routers)
-│   ├── core/           # Config, security, utilities
-│   ├── models/         # Database models
-│   ├── schemas/        # Pydantic schemas
-│   ├── services/       # Business logic layer
-│   ├── db/             # DB session, engine
-│   └── main.py         # FastAPI entrypoint
-├── migrations/         # Alembic
-└── tests/              # Unit & integration tests
+backend
+├── app
+│   ├── api            # Route handlers
+│   ├── core           # Config, Security, Utilities
+│   ├── db             # DB Session dependencies
+│   ├── models         # Database models
+│   ├── schemas        # Schemas
+│   ├── services       # Business logic layer
+│   ├── __init__.py    # APIRouter
+│   └── __main__.py    # Uvicorn entrypoint
+├── migrations         # Alembic
+└── tests/             # Unit & integration tests
 ```
 
 ---
