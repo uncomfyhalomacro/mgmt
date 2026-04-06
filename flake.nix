@@ -36,6 +36,7 @@
         {
           default = pkgs.mkShellNoCC {
             packages = with pkgs; [
+              hurl
               nodejs
               redis
               postgresql
