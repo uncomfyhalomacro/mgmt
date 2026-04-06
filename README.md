@@ -128,42 +128,6 @@ backend/
 
 ---
 
-## ⚙️ Installation
-
-### 1. Clone repository
-```bash
-git clone https://github.com/yourusername/appointment-system.git
-cd appointment-system
-```
-
-### 2. Setup environment
-```bash
-cp .env.example .env
-```
-
-Configure:
-```
-DATABASE_URL=postgresql+asyncpg://user:password@localhost/db
-SECRET_KEY=your_secret
-```
-
-### 3. Install dependencies
-```bash
-pip install -r requirements.txt
-```
-
-### 4. Run migrations
-```bash
-alembic upgrade head
-```
-
-### 5. Start server
-```bash
-uvicorn app.main:app --reload
-```
-
----
-
 ## 📡 API Overview
 
 ### Auth
