@@ -1,7 +1,10 @@
 set dotenv-load := true
 
 serve:
-	uvicorn app.main:app --reload --host ${HOST} --port ${PORT}
+	uv run -m app
+
+tests +args="":
+	uv run pytest {{args}}
 
 alembic +args:
 	alembic {{args}}

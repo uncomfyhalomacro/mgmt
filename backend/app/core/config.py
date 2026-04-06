@@ -3,17 +3,17 @@ from typing import Annotated
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class AuthConfig(BaseModel):
-    jwt_secret: Annotated[str, Field()] = ""
-    cookie_secret: Annotated[str, Field()] = ""
+    JWT_SECRET: Annotated[str, Field()] = ""
+    COOKIE_SECRET: Annotated[str, Field()] = ""
 
 class Settings(BaseSettings):
-    auth: Annotated[AuthConfig, Field()] = AuthConfig()
-    pg_url: Annotated[str, Field()] = "" 
-    domains: Annotated[set[str], Field()] = set()
-    api_root: Annotated[str, Field()] = "/api"
-    port: Annotated[int, Field()] = 8080
-    host: Annotated[str, Field()] = 'localhost'
+    AUTH: Annotated[AuthConfig, Field()] = AuthConfig()
+    PG_URL: Annotated[str, Field()] = "" 
+    DOMAINS: Annotated[set[str], Field()] = set()
+    API_ROOT: Annotated[str, Field()] = "/api"
+    PORT: Annotated[int, Field()] = 8080
+    HOST: Annotated[str, Field()] = 'localhost'
 
-    model_config = SettingsConfigDict()
+    model_config = SettingsConfigDict(env_nested_delimiter='__')
 
 settings = Settings()
