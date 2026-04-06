@@ -1,7 +1,7 @@
 set dotenv-load := true
 
 serve:
-	uvicorn main:app --reload --host ${HOST} --port ${PORT}
+	uvicorn app.main:app --reload --host ${HOST} --port ${PORT}
 
 alembic +args:
 	alembic {{args}}
