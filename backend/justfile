@@ -1,4 +1,5 @@
 set dotenv-load := true
+set shell := ["bash", "-cu"]
 
 serve:
 	uv run -m app
@@ -6,8 +7,27 @@ serve:
 tests +args="":
 	uv run pytest {{args}}
 
+test-migrations:
+    #!/bin/sh
+    export PGDATA="$(mktemp -d)"
+    export PG__PORT=6666
+    export INIT_DB_OPTIONS="-p ${PG__PORT}"
+    export PG__DBNAME="${TEST_DBNAME}"
+    export PG_URL="postgresql+asyncpg://${PG__USER}:${PG__PASSWORD}@${PG__HOST}:${PG__PORT}/${PG__DBNAME}"
+    echo "stopping any existing instance"
+    just stop-db || true
+    echo "Starting test postgres server with ${PGDATA}"
+    just start-db
+    just create-test-db
+    just alembic upgrade head
+    just alembic downgrade base
+    echo "Cleaning up"
+    just stop-db
+    rm -rf "${PGDATA}"
+    echo "Stopped postgres server. Do not forget to run start-db with your own PGDATA to restart"
+
 alembic +args:
-	alembic {{args}}
+    uv run alembic {{args}}
 
 start-db:
     if [ ! -f "${PGDATA}/PG_VERSION" ]; then initdb -D "${PGDATA}" -U ${PG__USER}; fi

@@ -14,6 +14,6 @@ class Settings(BaseSettings):
     PORT: Annotated[int, Field()] = 8080
     HOST: Annotated[str, Field()] = 'localhost'
 
-    model_config = SettingsConfigDict(env_nested_delimiter='__')
+    model_config = SettingsConfigDict(env_file='.env', extra='ignore', env_nested_delimiter='__')
 
 settings = Settings()

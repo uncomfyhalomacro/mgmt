@@ -30,4 +30,5 @@ def test_jwt_different_sub():
     token = service.sign(claims=c2)
     assert(service.verify(token) == c2)
     assert(c1 != c2)
-    
+
+
